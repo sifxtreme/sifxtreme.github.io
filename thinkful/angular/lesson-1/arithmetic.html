@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Adder/Subtractor</title>
+	<style type="text/css">
+	body, input, label {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight: 300;
+	}
+	body {
+		background-color: #ddd;
+		margin: 0;
+	}
+	#applicationDiv {
+		background-color: #fff;
+		margin: 0 auto;
+		margin-top: 100px;
+		padding: 50px 100px;
+		border-top: 1px solid #777;
+		border-bottom: 1px solid #777;
+	}
+
+	#errorVal, #resultsVal, .inputArea {
+		text-align: center;
+	}
+	#errorVal{
+		color: red;
+		padding-bottom: 10px;
+	}
+	#resultsVal {
+		padding-top: 10px;
+	}
+
+	.inputArea {
+		padding: 5px;
+		height: 20px;
+	}
+
+	h1 { text-align: center; }
+
+	</style>
+</head>
+<body>
+	<div id="applicationDiv">
+		<h1>Adder/Subtractor</h1>
+		<div id="errorVal" style="display:none;"></div>
+		<div class="inputArea">
+			<label for="firstVal">X = </label><input name="firstVal" id="firstVal" type="text" placeholder="Enter an Integer">
+		</div>
+		<div class="inputArea">
+			<label for="secondVal">Y = </label><input name="secondVal" id="secondVal" type="text" placeholder="Enter an Integer">
+		</div>
+		<div class="inputArea">
+			<button id="plusButton">+</button>
+			<button id="minusButton">-</button>
+		</div>
+		<div id="resultsVal"></div>
+	</div>
+
+
+</body>
+<script>
+
+var	plusButton = document.getElementById("plusButton"),
+	minusButton = document.getElementById("minusButton"),
+	errorVal = document.getElementById("errorVal")
+	resultsVal = document.getElementById("resultsVal")
+	;
+
+function setError(errorMessage){
+	errorVal.innerHTML = errorMessage;
+	errorVal.style.display = "block";
+}
+
+function isInteger(value) {
+  if ((undefined === value) || (null === value)) {
+    return false;
+  }
+  return value % 1 == 0;
+}
+
+function showResults(operation){
+	return function(){
+		var xVal = document.getElementById("firstVal").value,
+			yVal = document.getElementById("secondVal").value
+
+		errorArray = [];
+
+		if(xVal == ""){
+			errorArray.push("Please enter a value for X");
+		} 
+		else if(!isInteger(xVal)){
+			errorArray.push("Please enter an integer value for X");
+		} 
+		if(yVal == ""){
+			errorArray.push("Please enter a value for Y");
+		} 
+		else if(!isInteger(yVal)){
+			errorArray.push("Please enter an integer value for Y");
+		} 
+
+		if(errorArray.length != 0){
+			setError(errorArray.join("<br />"));
+			return;
+		}
+
+		if(operation == "add"){
+			var addition = 
+			resultsVal.innerHTML = xVal + " plus " + yVal + " is " + (parseInt(xVal)+parseInt(yVal));
+		}
+		else if(operation == "subtract"){
+			resultsVal.innerHTML = xVal + " minus " + yVal + " is " + (parseInt(xVal)-parseInt(yVal));
+		}
+
+	}
+}
+
+plusButton.addEventListener('click', showResults("add"));
+minusButton.addEventListener('click', showResults("subtract"));
+
+</script>
+</html>
