@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="waiterApp">
+<head>
+	<title>Waitstaff Calculator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<div class="container" ng-controller="WaiterCtrl">
+
+<h1>Waitstaff Calculator</h1>
+
+<div class="mealDetails leftSide borderDiv">
+	<h3>Enter the Meal Details</h3>
+	<form name="enterPriceForm" ng-submit="submitDetails" novalidate>
+		<div><label for="mealPrice">Base Meal Price: $</label><input ng-model="mealPrice" required type="number" step="0.01"/></div>
+		<div><label for="taxRate">Tax Rate: %</label><input ng-model="taxRate" required type="number" step="0.05"/></div>
+		<div><label for="tipPercentage">Tip Percentage: %</label><input ng-model="tipPercentage" required type="number" step="0.1"/></div>
+		<div class="error" ng-show="formError != ''">Please enter in valid values for the form</div>
+		<div class="inputButtons">
+			<button ng-click="submitDetails()" id="submit">Submit</button>
+			<button ng-click="resetDetails()" id="cancel">Cancel</button>
+		</div>
+	</form>
+</div>
+
+<div class="rightSide">
+	<div class="customerCharges borderDiv">
+		<h3>Customer Charges</h3>
+		<div><label>Subtotal</label><span>{{subtotal | number:2}}</span></div>
+		<div><label>Tip </label><span>{{tip | number:2}}</span></div>
+		<hr>
+		<div><label>Total </label><span>{{total | number:2}}</span></div>
+	</div>
+	<div class="earningsInfo borderDiv">
+		<h3>My Earnings Info</h3>
+		<div><label>Tip Total: </label><span>{{tipTotal | number:2}}</span></div>
+		<div><label>Meal Count: </label><span>{{mealCount | number:0}}</span></div>
+		<div><label>Avg Tip Per Meal: </label><span>{{avgTipPerMeal | number:2}}</span></div>
+	</div>
+</div>
+
+<button id="resetButton" ng-click="init()">Reset All</button>
+</div>
+
+<script src="angular.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
