@@ -1,0 +1,161 @@
+body, input, label, button {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight: 300;
+	}
+	body {
+		margin: 0;
+	}
+	.container {
+		background-color: #fff;
+		margin: 50px auto;
+		border: 3px solid #222;
+		max-width: 980px;
+	}
+
+	.smiley {
+		float:left;
+		padding: 0px 30px;
+		border: 3px solid #222;
+		width: 30%;
+		min-height: 220px;
+		line-height: 200px;
+		box-sizing: border-box;
+	}
+	.smiley img {
+		padding-top: 5px;
+		margin: 0 auto;
+		display: block;
+		vertical-align: middle;
+	}
+	.title {
+		float: left;
+		width: 70%;
+		border: 3px solid #222;
+		box-sizing: border-box;
+		min-height: 220px;
+	}
+	.title img {
+		padding-top: 20px;
+		margin: 0 auto;
+		display: block;
+		text-align: center;
+	}
+
+	h1 { 
+		text-align: center; 
+		font-size: 72px; 
+		padding: 0; 
+		margin: 0; 
+		margin-top: -20px; 
+		font-weight: normal
+	}
+
+	.inputSec {
+		padding: 25px;
+		margin-bottom: 25px;
+	}
+	.inputs div {
+		width: 33%;
+		box-sizing: border-box;
+		float: left;
+	}
+	.inputs div input {
+		margin: 10px; 
+		padding: 5px;
+	}
+	h2 { 
+		font-weight: normal; 
+		font-size: 30px;
+	}
+	h3{
+		font-weight: normal;
+	}
+	h3 a { background: #aaa; padding: 10px; font-size: 16px; color: white; display:inline-block; cursor: pointer}
+	h3 .selected {
+		background: #833;
+	}
+
+	input { 
+		height: 20px; 
+		font-size: 18px
+	}
+
+	.inputView hr {
+		margin-top: 40px;
+		width: 95%;
+		border: none;
+		height: 3px;
+		color: black;
+		background-color: black;
+	}
+
+	.madlibButton {
+		height: 50px;
+		padding: 10px;
+		background: white;
+		font-size: 16px;
+		font-weight: bold;
+		border: 2px solid black;
+		float: right;
+		margin: 25px;
+
+	}
+
+	.errors p { color: red; margin-left: 40px;}
+
+	.paragraphSec {
+		padding: 40px;
+		font-size: 18px;
+		margin-top: 25px;
+	}
+
+	.paragraphSec p {
+		max-width: 480px;
+		margin: 0 auto;
+	}
+
+	.paragraphSec span{
+		text-decoration: underline;
+	}
+
+.input-view-show-animation.ng-hide-add,
+.input-view-show-animation.ng-hide-remove {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+
+  /* remember to add this */
+  display:block!important;
+  opacity:1;
+}
+.input-view-show-animation.ng-hide {
+  opacity:0;
+}
+
+.results-view-show-animation.ng-hide-add,
+.results-view-show-animation.ng-hide-remove {
+  -webkit-transition:1.0s linear all 0.5s;
+  transition:1.0s linear all 0.5s;
+
+  /* remember to add this */
+  display:block!important;
+  opacity:1;
+}
+.results-view-show-animation.ng-hide {
+  opacity:0;
+}
+
+.paragraphSec span.ng-hide-add,
+.paragraphSec span.ng-hide-remove {
+	-webkit-transition:1.5s linear all 0.5s;
+  transition:1.5s linear all 0.5s;
+  /*color: black;*/
+
+  /* remember to add this */
+  display:inline-block!important;
+  opacity:1;
+}
+.paragraphSec span.ng-hide {
+	text-decoration: none;
+  opacity:0.5;
+  color: #f00;
+}
