@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html ng-app="madlibsApp">
+<head>
+	<title>Automate This!</title>
+	<style type="text/css">
+	body, input, label, button {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight: 300;
+	}
+	body {
+		margin: 0;
+	}
+	.container {
+		background-color: #fff;
+		margin: 50px auto;
+		border: 3px solid #222;
+		max-width: 980px;
+	}
+
+	.smiley {
+		float:left;
+		padding: 0px 30px;
+		border: 3px solid #222;
+		width: 30%;
+		min-height: 220px;
+		line-height: 200px;
+		box-sizing: border-box;
+	}
+	.smiley img {
+		padding-top: 5px;
+		margin: 0 auto;
+		display: block;
+		vertical-align: middle;
+	}
+	.title {
+		float: left;
+		width: 70%;
+		border: 3px solid #222;
+		box-sizing: border-box;
+		min-height: 220px;
+	}
+	.title img {
+		padding-top: 20px;
+		margin: 0 auto;
+		display: block;
+		text-align: center;
+	}
+
+	h1 { 
+		text-align: center; 
+		font-size: 72px; 
+		padding: 0; 
+		margin: 0; 
+		margin-top: -20px; 
+		font-weight: normal
+	}
+
+	.inputSec {
+		padding: 25px;
+		margin-bottom: 25px;
+	}
+	.inputs div {
+		width: 33%;
+		box-sizing: border-box;
+		float: left;
+	}
+	.inputs div input {
+		margin: 10px; 
+		padding: 5px;
+	}
+	h2 { 
+		font-weight: normal; 
+		font-size: 30px;
+	}
+	h3{
+		font-weight: normal;
+	}
+	h3 a { background: #aaa; padding: 10px; font-size: 16px; color: white; display:inline-block; cursor: pointer}
+	h3 .selected {
+		background: #833;
+	}
+
+	input { 
+		height: 20px; 
+		font-size: 18px
+	}
+
+	.inputView hr {
+		margin-top: 40px;
+		width: 95%;
+		border: none;
+		height: 3px;
+		color: black;
+		background-color: black;
+	}
+
+	.madlibButton {
+		height: 50px;
+		padding: 10px;
+		background: white;
+		font-size: 16px;
+		font-weight: bold;
+		border: 2px solid black;
+		float: right;
+		margin: 25px;
+
+	}
+
+	.errors p { color: red; margin-left: 40px;}
+
+	.paragraphSec {
+		padding: 40px;
+		font-size: 18px;
+		margin-top: 25px;
+	}
+
+	.paragraphSec p {
+		max-width: 480px;
+		margin: 0 auto;
+	}
+
+	.paragraphSec span{
+		text-decoration: underline;
+	}
+
+.input-view-show-animation.ng-hide-add,
+.input-view-show-animation.ng-hide-remove {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+
+  /* remember to add this */
+  display:block!important;
+  opacity:1;
+}
+.input-view-show-animation.ng-hide {
+  opacity:0;
+}
+
+.results-view-show-animation.ng-hide-add,
+.results-view-show-animation.ng-hide-remove {
+  -webkit-transition:1.0s linear all 0.5s;
+  transition:1.0s linear all 0.5s;
+
+  /* remember to add this */
+  display:block!important;
+  opacity:1;
+}
+.results-view-show-animation.ng-hide {
+  opacity:0;
+}
+
+.paragraphSec span.ng-hide-add,
+.paragraphSec span.ng-hide-remove {
+	-webkit-transition:1.5s linear all 0.5s;
+  transition:1.5s linear all 0.5s;
+  /*color: black;*/
+
+  /* remember to add this */
+  display:inline-block!important;
+  opacity:1;
+}
+.paragraphSec span.ng-hide {
+	text-decoration: none;
+  opacity:0.5;
+  color: #f00;
+}
+
+
+
+	</style>
+
+</head>
+<body>
+
+<div class="container" ng-controller="MadlibsController">
+
+	<div class="header">
+		<div class="smiley"><img src="mad-lib-happy-face.png"></div>
+		<div class="title">
+			<img src="ng-mad-libs-logo.png">
+			<h1>Automate This!</h1>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
+
+	<section class="inputView input-view-show-animation" ng-hide="!showInputs">
+		<form name="madlibInputs" ng-submit="createStory()" novalidate>
+		<div class="inputSec">
+			<h2>Provide the following words:</h2>
+			<h3>Are you male/female: <a ng-click="changeGender('m')" ng-class="gender == 'm' ? 'selected' : '' ">Male</a> OR <a ng-click="changeGender('f')" ng-class="gender == 'f' ? 'selected' : '' ">Female</a></h3>
+			<div class="inputs">
+				<div>
+					<input name="person_name" placeholder="person name" ng-model="person_name" required/>
+					<input name="job_title" placeholder="Job Title" ng-model="job_title" required/>
+					<input name="tedious_task" placeholder="Tedious task" ng-model="tedious_task" required/>
+				</div>
+				<div>
+					<input name="dirty_task" placeholder="Dirty task" ng-model="dirty_task" required/>
+					<input name="celebrity" placeholder="Celebrity" ng-model="celebrity" required/>
+					<input name="useless_skill" placeholder="Useless Skill" ng-model="useless_skill" required/>
+				</div>
+				<div>
+					<input name="obnoxious_celebrity" placeholder="Obnoxious celebrity" ng-model="obnoxious_celebrity" required/>
+					<input name="huge_number" placeholder="Huge number" ng-model="huge_number" required type="number"/>
+					<input name="adjective" placeholder="Adjective" ng-model="adjective" required/>
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div class="errors">
+			<p ng-if="submitted && madlibInputs.person_name.$error.required">person name input field is required</p>
+			<p ng-if="submitted && madlibInputs.job_title.$error.required">Job Title input field is required</p>
+			<p ng-if="submitted && madlibInputs.tedious_task.$error.required">Tedious task input field is required</p>
+			<p ng-if="submitted && madlibInputs.dirty_task.$error.required">Dirty task input field is required</p>
+			<p ng-if="submitted && madlibInputs.celebrity.$error.required">Celebrity input field is required</p>
+			<p ng-if="submitted && madlibInputs.useless_skill.$error.required">Useless Skill input field is required</p>
+			<p ng-if="submitted && madlibInputs.obnoxious_celebrity.$error.required">Obnoxious celebrity input field is required</p>
+			<p ng-if="submitted && madlibInputs.huge_number.$error.required">Huge number input field is required</p>
+			<p ng-if="submitted && madlibInputs.huge_number.$error.number">Huge number input field must be a number</p>
+			<p ng-if="submitted && madlibInputs.adjective.$error.required">Adjective input field is required</p>
+		</div>
+		<hr />
+		<input type="submit" class="madlibButton" value="Generate My Mad Lib">
+		</form>
+		<div style="clear:both;"></div>
+	</section>
+
+	<section class="resultsView results-view-show-animation" ng-hide="showInputs">
+		<div class="paragraphSec">
+			<p><span ng-hide="showInputs">{{person_name}}</span> was a <span ng-hide="showInputs">{{job_title}}</span> who loved technology. Although {{gender=='f' ? 's' : ''}}he loved parts of her job, {{gender=='f' ? 's' : ''}}he absolutely hated  <span ng-hide="showInputs">{{tedious_task}}</span> and <span ng-hide="showInputs">{{dirty_task}}</span>. So, {{person_name}} met with {{gender=='f' ? 'her' : 'his'}} life mentor <span ng-hide="showInputs">{{celebrity}}</span> who told {{gender=='f' ? 'her' : 'him'}} to learn how to <span ng-hide="showInputs">{{useless_skill}}</span> with Thinkful. Thinkful didn't offer a course on <span ng-hide="showInputs">{{useless_skill}}</span> so {{gender=='f' ? 's' : ''}}he studied programming instead.</p>
+			<br />
+			<p>What a great decision! With {{gender=='f' ? 'her' : 'his'}} new skills, <span ng-hide="showInputs">{{person_name}}</span> built a(n) <span ng-hide="showInputs">{{adjective}}</span> robot named <span ng-hide="showInputs">{{obnoxious_celebrity}}</span> that not only loved <span ng-hide="showInputs">{{dirty_task}}</span> but did it <span ng-hide="showInputs">{{huge_number}}</span> times faster.</p>
+			<button ng-click="changeLibs()" class="madlibButton">Start Over</button>
+		</div>
+		<div style="clear:both;"></div>
+	</section>
+
+</div>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
