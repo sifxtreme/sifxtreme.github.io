@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="instagramSearchApp">
+<head>
+	<title>Instagram Searcher</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="container" ng-controller="InstagramSearchController">
+	<div class="logo"><img src="ng-instagram.png"></div>
+	<form name="instaform" novalidate ng-submit="getInstagramResults()">
+		<input ng-model="searchTerm" placeholder="Enter a tag to search" required />
+		<button>Get Pictures</button>
+	</form>
+	<div ng-if="showNotification" class="message" ng-class="{error: hasError}">{{showNotification}}</div>
+	<div ng-show="results">
+		<div class="pictureDiv animate-repeat" ng-repeat="picture in results">
+			<h3><a target="_blank" href='http://instagram.com/{{picture.user.username}}'>{{picture.user.username}}</a></h3>
+			<a href='{{picture.link}}' target="_blank"><img ng-src='{{picture.images.low_resolution.url}}' /></a>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
