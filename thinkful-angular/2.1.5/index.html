@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="waiterApp">
+<head>
+	<title>Waitstaff Calculator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body ng-class="{loading: isLoading}">
+
+<div class="container">
+
+	<h1>Waitstaff Calculator</h1>
+
+	<div class="nav">
+		<a ng-class="{selected: navigationValue =='home'}" href="#/">Home</a>
+		<span>|</span>
+		<a ng-class="{selected: navigationValue =='meal'}" href="#/new-meal">New Meal</a>
+		<span>|</span>
+		<a ng-class="{selected: navigationValue =='earnings'}" href="#/my-earnings">My Earnings</a>
+	</div>
+
+	<div class="animate-view-container">
+		<div ng-view class="animate-view"></div>
+	</div>
+
+</div>
+
+<script src="./angular.js"></script>
+<script src="./angular-route.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

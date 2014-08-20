@@ -1,0 +1,106 @@
+body, input, label, button {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+}
+
+body {
+	width: 500px;
+	margin: 0 auto;
+	position:relative; 
+	min-height:100%;
+}
+
+.nav {
+	text-align: center;
+	margin-bottom: 25px;
+	font-size: 20px;
+}
+
+.nav a { padding: 5px; color: #ba050f;}
+
+.nav .selected { color: black; text-decoration: none; cursor: default;}
+
+h1, h3 {
+	font-weight: normal;
+	text-align: center;
+}
+
+h3{
+	border-bottom: 3px solid black;
+	padding: 5px;
+	margin: 0;
+	margin-bottom: 25px;
+}
+
+input {
+	font-size: 16px;
+}
+
+.borderDiv {
+	border: 3px solid black;
+	margin-top: 10px;
+	padding-bottom: 25px;
+}
+
+.error { color: red; text-align: center; margin-top: 15px}
+
+label{
+	width: 160px;
+	text-align: right;
+	display: inline-block;
+	padding: 15px;
+}
+
+.inputButtons {
+	margin: 25px auto;
+	text-align: center;
+}
+
+button {
+	padding: 10px;
+	background: white;
+	border: 3px solid black;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+button:hover {
+	background: #ddd;
+}
+
+.reset {
+	text-align: center;
+	margin-top: 25px;
+}
+
+.loading {
+  position:relative;
+  height:100%;
+}
+.loading:before {
+  position:absolute;
+  content:"";
+  left:0;
+  bottom:0;
+  right:0;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,0.9) no-repeat center center;
+  background-image: url('./loading-animation.gif');
+  background-size: 50px;
+}
+.animate-view-container { position:relative; min-height: 100%; }
+.animate-view.ng-enter,
+.animate-view.ng-leave {
+    transition:1s linear all;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#eee;
+}
+.animate-view.ng-enter { opacity:0; z-index:100; }
+.animate-view.ng-enter.ng-enter-active { opacity:1; }
+.animate-view.ng-leave { opacity:1; z-index:99; }
+.animate-view.ng-leave.ng-leave-active { opacity:0; }
