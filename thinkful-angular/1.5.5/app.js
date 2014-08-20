@@ -40,8 +40,16 @@ angular.module('instagramSearchApp', ['ngAnimate'])
 			}).
 			success(function(result){
 
+
 				notification().then(function(){
 					$scope.results = result.data;
+
+					if(!result.data){
+						$scope.showNotification = "Error Searching Instagram";
+						$scope.hasError = true;
+						return
+					}	
+									
 					var numberOfResults = $scope.results.length;
 					$scope.showNotification = "We found " + $scope.results.length + " result" + ($scope.results.length == 1 ? '' : 's');
 				});
