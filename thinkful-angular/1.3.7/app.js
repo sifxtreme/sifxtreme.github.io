@@ -20,7 +20,6 @@ myApp.controller('WaiterCtrl', ['$scope', function($scope){
 	};
 
 	$scope.init = function(){
-		console.log("HEYY");
 		$scope.formError = "";
 		$scope.resetDetails();
 		$scope.initCharges();

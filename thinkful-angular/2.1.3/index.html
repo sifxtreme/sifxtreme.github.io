@@ -7,21 +7,23 @@
 
 <body>
 
-<div class="container" ng-controller="WaiterCtrl">
+<div class="container">
 
 	<h1>Waitstaff Calculator</h1>
 
-	<div class="header">
-		<a href="#/">Home</a>
-		<a href="#/new-meal">New Meal</a>
-		<a href="#/my-earnings">My Earnings</a>
+	<div class="nav">
+		<a ng-class="{selected: navigationValue =='home'}" href="#/">Home</a>
+		<span>|</span>
+		<a ng-class="{selected: navigationValue =='meal'}" href="#/new-meal">New Meal</a>
+		<span>|</span>
+		<a ng-class="{selected: navigationValue =='earnings'}" href="#/my-earnings">My Earnings</a>
 	</div>
 	<div ng-view></div>
 
 </div>
 
 <script src="./angular.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+<script src="./angular-route.js"></script>
 <script src="./app.js"></script>
 </body>
 </html>

@@ -1,15 +1,44 @@
 angular.module('waiterApp', ['ngRoute'])
+.run(function($rootScope, $location){
+
+	$rootScope.initAll = function(){
+		$rootScope.earnings = {
+			mealCount: 0,
+			tipTotal: 0
+		};
+	};
+	$rootScope.initAll();
+
+  $rootScope.reset = function(){
+    $rootScope.initAll();
+    $location.path('/new-meal');
+  };
+
+	$rootScope.$watchGroup(['earnings.tipTotal', 'earnings.mealCount'], function(newValues, oldValues, scope) {
+		if($rootScope.earnings.mealCount != 0){
+			$rootScope.earnings.avgTipPerMeal = $rootScope.earnings.tipTotal/$rootScope.earnings.mealCount;
+		}
+		else{
+			$rootScope.earnings.avgTipPerMeal = 0;
+		}
+	});
+
+
+})
 .config(function($routeProvider){
 
 $routeProvider
 	.when('/', {
 	    templateUrl : './home.html',
+	    controller: 'HomeCtrl'
 	})
 	.when('/new-meal', {
 	    templateUrl : './new-meal.html',
+	    controller : 'MealCtrl'
 	})
 	.when('/my-earnings', {
 	    templateUrl : './my-earnings.html',
+	    controller : 'EarningsCtrl'
 	})
 	.when('/error', {
 	    template : '<p>Error Page: Not Found</p>'
@@ -19,68 +48,61 @@ $routeProvider
   });
 
 })
-.controller('WaiterCtrl', ['$scope', function($scope){
+.service('sharedProperties', function(){
+
+})
+.controller('MealCtrl', function($scope, $rootScope){
+	$rootScope.navigationValue = 'meal'
 
 	$scope.resetDetails = function(){
-		$scope.mealPrice = '';
-		$scope.taxRate = '';
-		$scope.tipPercentage = '';
+		$scope.data.mealPrice = '';
+		$scope.data.taxRate = '';
+		$scope.data.tipPercentage = '';
 	};
 
 	$scope.initCharges = function(){
-		$scope.subtotal = 0;
-		$scope.tip = 0;
-		$scope.total = 0;
-	};
-
-	$scope.initEarnings = function(){
-		$scope.tipTotal = 0;
-		$scope.mealCount = 0;
+		$scope.data.subtotal = 0;
+		$scope.data.tip = 0;
+		$scope.data.total = 0;
 	};
 
 	$scope.init = function(){
-		$scope.formError = "";
+		$scope.data = {};
+		$scope.data.formError = "";
 		$scope.resetDetails();
 		$scope.initCharges();
-		$scope.initEarnings();
 	};
 
 	$scope.init();
 
 	$scope.submitDetails = function(){
 		if($scope.enterPriceForm.$invalid){
-			$scope.formError = "Please enter valid values ";
+			$scope.data.formError = "Please enter valid values ";
 		}
 		else{
-			$scope.formError = "";
-			$scope.tipTotal += $scope.tip;
-			$scope.mealCount++;
+			$scope.data.formError = "";
+			$rootScope.earnings.mealCount++;
+			$rootScope.earnings.tipTotal += $scope.data.tip;
 		}
 	};
 
-	$scope.$watchGroup(['mealPrice', 'taxRate', 'tipPercentage'], function(newValues, oldValues, scope) {
+	$scope.$watchGroup(['data.mealPrice', 'data.taxRate', 'data.tipPercentage'], function(newValues, oldValues, scope) {
 		if($scope.enterPriceForm.$invalid){
 			$scope.initCharges();
 		}
 		else{
-			$scope.formError = "";
-			$scope.subtotal = $scope.mealPrice * (1 + $scope.taxRate/100);
-			$scope.tip = $scope.mealPrice * ($scope.tipPercentage/100);
-			$scope.total = $scope.subtotal + $scope.tip;
+			$scope.data.formError = "";
+			$scope.data.subtotal = $scope.data.mealPrice * (1 + $scope.data.taxRate/100);
+			$scope.data.tip = $scope.data.mealPrice * ($scope.data.tipPercentage/100);
+			$scope.data.total = $scope.data.subtotal + $scope.data.tip;
 		}
 	});
 
-	$scope.$watchGroup(['tipTotal', 'mealCount'], function(newValues, oldValues, scope) {
-		if($scope.mealCount != 0){
-			$scope.avgTipPerMeal = $scope.tipTotal/$scope.mealCount;
-		}
-		else{
-			$scope.avgTipPerMeal = 0;
-		}
-		
-	});
+})
+.controller('HomeCtrl', function($scope, $rootScope){
+	$rootScope.navigationValue = 'home'
+})
+.controller('EarningsCtrl', function($scope, $rootScope){
+	$rootScope.navigationValue = 'earnings'
+})
 
-
-
-
-}]);
