@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="waiterApp">
+<head>
+	<title>Waitstaff Calculator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+<div class="container" ng-controller="WaiterCtrl">
+
+	<h1>Waitstaff Calculator</h1>
+
+	<div class="header">
+		<a href="#/">Home</a>
+		<a href="#/new-meal">New Meal</a>
+		<a href="#/my-earnings">My Earnings</a>
+	</div>
+	<div ng-view></div>
+
+</div>
+
+<script src="./angular.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

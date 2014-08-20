@@ -1,0 +1,8 @@
+<div class="earningsInfo borderDiv">
+	<h3>My Earnings Info</h3>
+	<div><label>Tip Total: </label><span>{{tipTotal | number:2}}</span></div>
+	<div><label>Meal Count: </label><span>{{mealCount | number:0}}</span></div>
+	<div><label>Avg Tip Per Meal: </label><span>{{avgTipPerMeal | number:2}}</span></div>
+</div>
+
+<button id="resetButton" ng-click="init()">Reset All</button>
