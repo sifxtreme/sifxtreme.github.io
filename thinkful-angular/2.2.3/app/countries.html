@@ -1,0 +1,24 @@
+<table>
+	<thead>
+	<tr class="tableHeader">
+		<th ng-click="changeOrder('countryName')">Name</th>
+		<th ng-click="changeOrder('countryCode')">Country Code</th>
+		<th ng-click="changeOrder('capital')">Capital</th>
+		<th ng-click="changeOrder('areaInSqKm')">Area (km2)</th>
+		<th ng-click="changeOrder('population')">Population</th>
+		<th ng-click="changeOrder('continent')">Continent</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="c in countries | orderBy:order:reverseSort" ng-click="changeLocation(c.countryCode)">
+		<td>{{c.countryName}}</td>
+		<td>{{c.countryCode}}</td>
+		<td>{{c.capital}}</td>
+		<td>{{c.areaInSqKm | number: 0}}</td>
+		<td>{{c.population | number: 0}}</td>
+		<td>{{c.continent}}</td>
+	</tr>
+	</tbody>
+</table>
+
+<div class="buttonWrapper"><a class="button" href="#/">Home</a></div>

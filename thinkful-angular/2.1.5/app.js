@@ -1,4 +1,4 @@
-angular.module('waiterApp', ['ngRoute'])
+angular.module('waiterApp', ['ngRoute', 'ngAnimate'])
 .run(function($rootScope, $location, $timeout) {
     $rootScope.$on('$routeChangeError', function() {
         $location.path("/error");
@@ -9,7 +9,7 @@ angular.module('waiterApp', ['ngRoute'])
     $rootScope.$on('$routeChangeSuccess', function() {
       $timeout(function() {
         $rootScope.isLoading = false;
-      }, 1000);
+      }, 250);
     });
 })
 .run(function($rootScope, $location){

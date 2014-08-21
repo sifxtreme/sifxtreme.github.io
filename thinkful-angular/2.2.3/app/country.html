@@ -1,0 +1,26 @@
+
+<img id="map" ng-src="http://www.geonames.org/img/country/250/{{country.countryCode}}.png"/>
+<img id="flag" ng-src="http://www.geonames.org/flags/x/{{country.countryCode | lowercase }}.gif"/>
+
+<h2>{{country.countryName}}</h2>
+<div class="info">
+	<div><label>Population of Country:</label><span> {{country.population | number: 0}}</span></div>
+	<div><label>Area:</label><span> {{country.areaInSqKm | number: 0}} sq km</span></div>
+	<div><label>Capital:</label><span> {{country.capital}}</span></div>
+	<div><label>Population of Capital:</label><span> {{capital.population | number: 0}}</span></div>
+	<div class="neighbors" >
+		<label>{{neighbors.length}} Neighbors:</label>
+		<div class="neighbor">
+			<div ng-repeat="neighbor in neighbors">
+				<a href="#/countries/{{neighbor.countryCode}}">{{neighbor.countryName}}</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div style="clear:both"></div>
+<div class="buttonWrapper">
+	<a class="button" href="#/">Home</a>
+	<a class="button" href="#/countries">Browse Countries</a>
+</div>

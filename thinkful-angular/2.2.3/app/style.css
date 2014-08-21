@@ -1,0 +1,116 @@
+body, input, label, button {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	margin: 0;
+}
+
+h1 {
+	font-weight: normal;
+	border-bottom: 3px solid black;
+	text-align: center;
+	padding-bottom: 20px;
+	font-size: 48px;
+}
+
+.home, .info {
+	width: 480px;
+	margin: 0 auto;
+}
+
+.container {
+	margin: 0 auto;
+	position: relative;
+	width: 1200px;
+}
+
+table th {
+	cursor: pointer;
+	color: #ba050f;
+	margin-bottom: 10px;
+	border-bottom: 3px solid black;
+}
+
+td{
+	padding: 0 5px;
+}
+
+tr {
+	cursor: pointer;
+}
+
+table{
+	display: block;
+	margin: 0 auto;
+	width: 980px;
+	height: 500px;
+	overflow-y: scroll;
+	border: 3px solid black;
+}
+
+thead {
+	border-bottom: 3px solid black;
+}
+
+table tbody tr:nth-child(odd) {
+	background: #FFD1DB;
+}
+
+.buttonWrapper{
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.button {
+	margin-top: 25px;
+	padding: 10px;
+	background: white;
+	border: 3px solid black;
+	cursor: pointer;
+	font-size: 16px;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+}
+
+.button:hover {
+	background: #ddd;
+}
+
+h2 {
+	font-weight: normal;
+	font-size: 36px;
+	text-align: center;
+}
+
+.info label {
+	width: 200px;
+	display: inline-block;
+	text-align: right;
+	padding-right: 10px;
+	padding-bottom: 20px;
+}
+
+.images {
+	width: 480px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+#map{
+	max-width: 240px;
+	float: left;
+}
+
+#flag {
+	max-width: 240px;
+	float:right;
+}
+
+.neighbors label {
+	float: left;
+}
+
+.neighbors .neighbor {
+	float: left;
+}
