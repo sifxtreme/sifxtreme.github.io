@@ -8,12 +8,14 @@
 <title>Countries and Capitals</title>
 </head>
 
-<body>
+<body ng-class="{loading: isLoading}">
 
 <div class="navbar">
   <h1>Countries & Capitals</h1>
 </div>
-<div ng-view class="container"></div>
+<div class="animate-view-container container">
+	<div ng-view class="animate-view animate-out"></div>
+</div>
   
 <!-- build:js ./_assets/combined.js -->
 <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
