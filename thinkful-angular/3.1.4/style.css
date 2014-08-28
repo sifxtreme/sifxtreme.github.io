@@ -1,0 +1,18 @@
+body {
+	margin: 0 auto;
+	width: 980px;	
+}
+
+body, input, label {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+}
+
+.container {
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 600px;
+
+	border: 3px solid black;
+	box-sizing: border-box;
+}
