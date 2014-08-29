@@ -1,0 +1,21 @@
+{
+  "name": "practice-unit-testing-directives",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-cli": "^0.0.4",
+    "karma-jasmine": "^0.1.5",
+    "karma-ng-html2js-preprocessor": "^0.1.0",
+    "karma": "^0.12.16"
+  },
+  "devDependencies": {
+    "jquery": "^2.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,53 @@
+body {
+	margin: 0 auto;
+	width: 980px;	
+}
+
+body, input, label, button {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+}
+
+div, button {
+	box-sizing: border-box;
+}
+
+.container {
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 600px;
+
+}
+
+.editableContainer {
+	border: 3px solid black;
+	margin: 15px;
+	padding: 10px;
+	position: relative;
+}
+
+.editableContainer .myEditable{
+	margin-right: 100px;
+	margin-left: 20px;
+}
+
+button {
+	position: absolute;
+	right: 5px;
+	padding: 10px;
+	border: 1px solid black;
+	color: white;
+	font-size: 18px;
+}
+
+button.save {
+	background: green;
+}
+
+.myEditable.editable {
+	color: red;
+}
+
+button.edit {
+	background: red;
+}
