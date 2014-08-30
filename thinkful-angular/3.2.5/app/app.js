@@ -9,6 +9,7 @@ angular.module('calendarDemoApp', [])
 	  scope: true,
 	  link: function(scope, element, attrs){
 	  	var currentDate = new Date();
+	  	scope.today = currentDate;
 
 	  	var setYears = function(year){
 	  		years = [];

@@ -28,9 +28,9 @@
 		<div class="border"></div>
 
 
-		<div class="dayCell" ng-repeat="day in days" ng-class="{invalidDay: !(day.date >= firstDay && day.date <= lastDay), bottomBorder: $index/7 < dayCount/7 - 1, rightBorder: ($index+1)%7 != 0}">
+		<div class="dayCell" ng-repeat="day in days" ng-class="{invalidDay: !(day.date >= firstDay && day.date <= lastDay), bottomBorder: $index/7 < dayCount/7 - 1, rightBorder: ($index+1)%7 != 0, today: (day.date.getDate() == today.getDate() && day.date.getMonth() == today.getMonth() && day.date.getFullYear() == today.getFullYear())}">
 			<div class="day">
-				{{day.date.getDate()}}
+				<span ng-if="day.date >= firstDay && day.date <= lastDay">{{day.date.getDate()}}</span>
 			</div>
 		</div>
 		<div class="clear"></div>
