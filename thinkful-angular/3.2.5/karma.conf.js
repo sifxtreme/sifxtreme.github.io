@@ -16,8 +16,8 @@ module.exports = function(config) {
       'app/bower_components/angular/angular.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/utilities/calendar-range/calendarRange.js',
-      'app/*.js', // this will pick up both spec and app
-      'app/*.html' // for our directive templates
+      'app/**/*.js', // this will pick up both spec and app
+      'app/**/*.html' // for our directive templates
     ],
 
 

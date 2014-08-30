@@ -49,6 +49,7 @@ angular.module('calendarDemoApp', [])
 
 	  	scope.updateCalendarBySelection = function(){
 	  		var newDate = new Date();
+	  		newDate.setDate(1);
 	  		newDate.setFullYear(scope.year, convertMonthNameToNumber(scope.month));
 	  		setScopeVars(newDate);
 	  	}
