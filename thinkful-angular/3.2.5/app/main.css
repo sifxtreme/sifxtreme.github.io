@@ -1,0 +1,90 @@
+/* your css code goes here */
+
+body {
+	margin: 0 auto;
+	width: 980px;	
+}
+
+body, input, label, button {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+}
+
+div, button, select {
+	box-sizing: border-box;
+}
+
+.invalidDay {
+	background: #ccc;
+}
+
+.calendarWrapper {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border: 3px solid black;
+}
+
+.calendarBody{
+	border-top: 3px solid black;
+}
+
+.border {
+	border-top: 3px solid black;
+}
+
+.bottomBorder {
+	border-bottom: 1px solid #ddd;
+}
+
+.rightBorder {
+	border-right: 1px solid #ddd;
+}
+
+.dayHeader div {
+	float: left;
+	width: 14.285%;
+	text-align: center;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.dayCell {
+	float: left;
+	width: 14.285%;
+	height: 100px;
+
+}
+
+.day {
+	margin-top: 40px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.clear {
+	clear: both;
+	color: #ba050f;
+}
+
+.calendarHeader {
+	padding: 10px;
+}
+
+select, button {
+	font-size: 18px;
+	border: 1px solid #ba050f;
+	background-color: #ba050f;
+	color: white;
+	font-weight: bold;
+}
+
+button {
+	padding-left: 10px;
+	padding-right: 10px;
+
+}
+
+.buttonGroup {
+	float: right;
+}
+

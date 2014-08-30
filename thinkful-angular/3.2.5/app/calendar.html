@@ -1,0 +1,39 @@
+<div class="calendarWrapper">
+	<div class="calendarHeader">
+		<select ng-model="month" ng-options="month for month in monthNames" ng-change="updateCalendarBySelection()">
+			<option value="">-- choose month --</option>
+		</select>
+		<select ng-model="year" ng-options="year for year in years" ng-change="updateCalendarBySelection()">
+			<option value="">-- choose year --</option>
+		</select>
+		<div class="buttonGroup">
+			<button id="leftMonth" ng-click="updateCalendarByArrow(-1)"><-</button>
+			<button id="rightMonth" ng-click="updateCalendarByArrow(1)">-></button>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<div class="calendarBody">
+
+		<div class="dayHeader">
+			<div>Sunday</div>
+			<div>Monday</div>
+			<div>Tuesday</div>
+			<div>Wednesday</div>
+			<div>Thursday</div>
+			<div>Friday</div>
+			<div>Saturday</div>
+		</div>
+		<div class="clear"></div>
+		<div class="border"></div>
+
+
+		<div class="dayCell" ng-repeat="day in days" ng-class="{invalidDay: !(day.date >= firstDay && day.date <= lastDay), bottomBorder: $index/7 < dayCount/7 - 1, rightBorder: ($index+1)%7 != 0}">
+			<div class="day">
+				{{day.date.getDate()}}
+			</div>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+</div>
