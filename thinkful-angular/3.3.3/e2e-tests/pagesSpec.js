@@ -57,4 +57,33 @@ describe("Test Pages", function() {
     browser.get(ROOT + "/?q=x");
     expect(element.all(by.css('.url-listing')).count()).toBe(0);
   });
+
+  it('should edit a URL listing', function() {
+    var customTitle = 'title-' + Math.random();
+    var customUrl = 'http://my-new-website.com/' + Math.random();
+    createUrlEntry(customTitle, customUrl);
+
+    element(by.css('.btn-primary')).click();
+
+    var newTitle = "this is a new title";
+    element(by.model('formCtrl.form.title')).clear();
+    element(by.model('formCtrl.form.title')).sendKeys(newTitle);
+    element(by.css('input[type=submit]')).click();
+
+    expect(element(by.css('.url-listing .listing-title')).getText()).toContain(newTitle);
+    expect(element(by.css('.url-listing .listing-url')).getText()).toContain(customUrl);
+  });
+
+  it('should delete a URL listing', function() {
+    var customTitle = 'title-' + Math.random();
+    var customUrl = 'http://my-new-website.com/' + Math.random();
+    createUrlEntry(customTitle, customUrl);
+
+    element(by.css('.btn-danger')).click();
+
+    expect(element.all(by.css('.url-listing')).count()).toBe(0);
+
+    expect(element.all(by.css('.empty-url-listing')).count()).toBe(1);
+    expect(element(by.css('.empty-url-listing')).getText()).toMatch(/no URL listings/);
+  });
 });
